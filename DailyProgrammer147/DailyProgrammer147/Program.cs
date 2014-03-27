@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+ * Author:  Hal Norwood <justhal@gmail.com>
+ * Date:    27 March 2014
+ * Spec:    http://www.reddit.com/r/dailyprogrammer/comments/1undyd/010714_challenge_147_easy_sport_points/
+ * Name:    Reddit Daily Programmer #147, Easy Sports Points
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
