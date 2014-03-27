@@ -10,6 +10,9 @@ namespace DailyProgrammer147
     {
         static void Main(string[] args)
         {
+            Console.Write("Enter score: ");
+            int score = Int16.Parse(Console.ReadLine());
+            Console.ReadKey();
         }
     }
 }
