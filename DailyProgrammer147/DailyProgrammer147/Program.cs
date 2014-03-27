@@ -17,12 +17,12 @@ namespace DailyProgrammer147
             int score = int.Parse(Console.ReadLine());
             
             int remainder = score % FIELD_GOAL_WITH_TWO_POINT_CONVERSION;
-            if(remainder == 0)
+            if(remainder == 0 || remainder == 3 || remainder == 6 || remainder == 7)
             {
                 validScore = true;
             } else
             {
-
+                validScore = false;
             }
 
             if(validScore)
