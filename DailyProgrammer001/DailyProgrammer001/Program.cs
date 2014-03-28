@@ -53,6 +53,7 @@ namespace DailyProgrammer001
                     {
                         // Repeated or out-of-order vowel
                         inOrder = false;
+                        break;
                     }
                 }
             }
