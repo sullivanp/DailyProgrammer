@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 /**
  * -------------------------------------------------------------------------------------------------
- * File name:       Challenge147.sln<br/>
- * Project name:    Challenge147.cs<br/>
+ * File name:       Challenge147E.sln<br/>
+ * Project name:    Challenge147E.cs<br/>
  * -------------------------------------------------------------------------------------------------
  * Creator:         Patrick Sullivan, sullivanpatrickjohn@gmail.com     
- * Course:          Daily Programming
+ * Course:          Daily Programmer
  * http://www.reddit.com/r/dailyprogrammer/comments/1undyd/010714_challenge_147_easy_sport_points/
  * Creation Date:   27 March 2014
  * -------------------------------------------------------------------------------------------------
  */
 
 
-namespace Challenge147
+namespace Challenge147E
 {
     class Program
     {
@@ -30,7 +30,7 @@ namespace Challenge147
             Console.Write("Enter a score: ");
             ScoreValid = VerifyScore(int.Parse(Console.ReadLine()));
                  
-            Console.WriteLine("Score is valid?: " + ScoreValid);
+            Console.WriteLine("Valid Score: " + ScoreValid);
             Console.ReadLine();
 	
         }

@@ -7,7 +7,7 @@
     <ProjectGuid>{1B546041-E525-48C1-BEA7-EA596EEE3F32}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Challenge147</RootNamespace>
+    <RootNamespace>Challenge147E</RootNamespace>
     <AssemblyName>Challenge147</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
