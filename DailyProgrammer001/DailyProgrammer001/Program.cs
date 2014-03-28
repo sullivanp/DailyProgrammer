@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+ * Author:  Hal Norwood <justhal@gmail.com>
+ * Date:    28 March 2014
+ * Spec:    http://www.reddit.com/r/dailyprogrammer/comments/1aih0v/031813_challenge_122_easy_words_with_ordered/
+ * Name:    Reddit Daily Programmer #122, Easy Words with Ordered Vowels
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
