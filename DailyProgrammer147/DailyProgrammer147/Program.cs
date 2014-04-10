@@ -17,29 +17,70 @@ namespace DailyProgrammer147
     {
         static void Main(string[] args)
         {
-            const int FIELD_GOAL_WITH_TWO_POINT_CONVERSION = 8;
             bool validScore = false;
+            int score = 0;
 
-            Console.Write("Enter score: ");
-            int score = int.Parse(Console.ReadLine());
+            while(score != -1)
+            {
+                Console.Write("Enter score: ");
+                score = int.Parse(Console.ReadLine());
+                if(score == -1)
+                {
+                    break;
+                }
             
-            int remainder = score % FIELD_GOAL_WITH_TWO_POINT_CONVERSION;
-            if(remainder == 0 || remainder == 3 || remainder == 6 || remainder == 7)
-            {
-                validScore = true;
-            } else
-            {
-                validScore = false;
-            }
+                validScore = IsValidScore(score);
 
-            if(validScore)
-            {
-                Console.WriteLine("Valid Score");
-            } else
-            {
-                Console.WriteLine("Invalid Score");
+                if(validScore)
+                {
+                    Console.WriteLine("Valid Score");
+                } else
+                {
+                    Console.WriteLine("Invalid Score");
+                }
             }
             Console.ReadKey();
+        }
+
+        public static bool IsValidScore(int score)
+        {
+            bool valid = false;
+
+            const int FIELD_GOAL = 3;
+            const int TOUCHDOWN = 6;
+            const int TOUCHDOWN_EXTRA_POINT = 7;
+            const int TOUCHDOWN_TWO_POINT_CONVERSION = 8;
+
+            if(score == 0)
+            {
+                valid = true;
+            }
+            else if (score < 0)
+            {
+                valid = false;
+            }
+            else if (IsValidScore(score - FIELD_GOAL))
+            {
+                valid = true;
+            }
+            else if (IsValidScore(score - TOUCHDOWN))
+            {
+                valid = true;
+            }
+            else if (IsValidScore(score - TOUCHDOWN_EXTRA_POINT))
+            {
+                valid = true;
+            }
+            else if(IsValidScore(score - TOUCHDOWN_TWO_POINT_CONVERSION))
+            {
+                valid = true;
+            }
+            else
+            {
+                valid = false;
+            }
+
+            return valid;
         }
     }
 }
