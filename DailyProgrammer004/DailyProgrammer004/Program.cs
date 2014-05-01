@@ -1,8 +1,8 @@
 ﻿/**
  * Author:  Hal Norwood <justhal@gmail.com>
  * Date:    01 May 2014
- * Spec:    http://www.reddit.com/r/dailyprogrammer/comments/23lfrf/4212014_challenge_159_easy_rock_paper_scissors/
- * Name:    Reddit Daily Programmer #159 Easy Rock Paper Scissors Lizard Spock
+ * Spec:    http://www.reddit.com/r/dailyprogrammer/comments/23qy19/4232014_challenge_159_intermediate_rock_paper/
+ * Name:    Reddit Daily Programmer #159 Intermediate Rock Paper Scissors Lizard Spock - Part 2 Enhancement
  */
 
 using System;
@@ -17,13 +17,14 @@ namespace DailyProgrammer003
     {
         static void Main(string[] args)
         {
-            String[] moves =    {   "Rock",         "Paper",    "Scissors",     "Lizard",       "Spock"     };
-            String [,] beats =  { //Rock            Paper       Scissors        Lizard          Spock
+            String[] moves =    { "Rock",           "Paper",    "Scissors",     "Lizard",       "Spock"     };
+            String[,] beats =   { //Rock            Paper       Scissors        Lizard          Spock
             /* Rock */          {   "",             "",         "crushes",      "crushes",      ""          }, 
             /* Paper */         {   "covers",       "",         "",             "",             "disproves" }, 
             /* Scissors */      {   "",             "cut",      "",             "decapitate",   ""          }, 
             /* Lizard */        {   "",             "eats",     "",             "",             "poisons"   }, 
             /* Spock */         {   "vaporizes",    "",         "smashes",      "",             ""          }};
+            int[] playerMoves = {   0,              0,          0,              0,              0           };
 
             int playerMoveIndex = -1;
             int computerMoveIndex = -1;
@@ -48,7 +49,7 @@ namespace DailyProgrammer003
                             playerMoveIndex = i;
                             break;
                         }
-                        else if(moveInput == "quit" || moveInput == "exit" || moveInput == "q" || moveInput == "x" || moveInput == "e" || moveInput == "")
+                        else if (moveInput == "quit" || moveInput == "exit" || moveInput == "q" || moveInput == "x" || moveInput == "e" || moveInput == "")
                         {
                             playerMoveIndex = -2;
                         }
@@ -59,11 +60,13 @@ namespace DailyProgrammer003
                     }
                 } while (playerMoveIndex == -1);
 
-                if(playerMoveIndex == -2)
+                if (playerMoveIndex == -2)
                 {
                     Console.WriteLine();
                     break;
                 }
+
+                playerMoves[playerMoveIndex]++;
 
                 computerMoveIndex = rng.Next(moves.Length);
 
