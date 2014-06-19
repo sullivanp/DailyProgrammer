@@ -1,0 +1,30 @@
+﻿body {
+}
+
+#map {
+    position: relative;
+    border: 1px solid #ffffff;
+}
+
+#commands {
+    position: static;
+    border: 1px solid #ff0000;
+}
+
+#shapes {
+    position: relative;
+    right: 100px;
+    left: 0px;
+    bottom:-100px;
+    top: 0px;
+    border: 1px solid #00ff00;
+    background: #007f00;
+}
+
+#preview {
+    border: 1px solid #0000ff;
+}
+
+#colors {
+    border: 1px solid #ffff00;
+}
