@@ -8,25 +8,6 @@ namespace XcomSquadGenerator
 {
     class RandomSquadGenerator
     {
-        /*
-        public Squad RandomSquad
-        {
-            get
-            {
-                Squad randomSquad = new Squad();
-                for (int i = 0; i != this.maxSquadSize; i++)
-                {
-                    randomSquad.AddUnit(randomUnitGenerator.RandomNonSoldier);
-                }
-                return randomSquad;
-            }
-            private set
-            {
-                RandomSquad = value;
-            }
-        }
-        */
-
         private RandomUnitGenerator randomUnitGenerator;
 
         private int minSquadSize;

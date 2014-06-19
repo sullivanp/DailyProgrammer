@@ -51,5 +51,11 @@ namespace XcomSquadGenerator
 
             return success;
         }
+
+        public string ToString()
+        {
+            string squad = "";
+            return squad;
+        }
     }
 }
