@@ -226,6 +226,10 @@
     <Content Include="Views\GraphMapper\Index.cshtml" />
     <Content Include="Views\GraphMapper\Welcome.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\GraphMapper\Create.cshtml" />
+    <Content Include="Views\GraphMapper\Delete.cshtml" />
+    <Content Include="Views\GraphMapper\Details.cshtml" />
+    <Content Include="Views\GraphMapper\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
