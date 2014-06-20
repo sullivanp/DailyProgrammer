@@ -20,8 +20,10 @@ namespace GraphMapper.Models
         public Grid()
         {
             GridMap = new Tile[12, 12]; // default grid 12x12
-            this.Rows = GridMap.GetLength(0);
-            this.Cols = GridMap.GetLength(1);
+            //this.Rows = GridMap.GetLength(0);
+            //this.Cols = GridMap.GetLength(1);
+            this.Rows = 12;
+            this.Cols = 12;
         }
 
         // overloaded constructor
