@@ -8,21 +8,18 @@ namespace GraphMapper.Controllers
 {
     public class GraphMapperController : Controller
     {
-        //
-        // GET: /GraphMapper/
-        public string Index()
+        // GET: GraphMapper
+        public ActionResult Index()
         {
-            return "This is my <b>default</b> action...";
-            //return View();
+            return View();
         }
 
-        // 
-        // GET: /HelloWorld/Welcome/ 
-
-        public string Welcome(string name, int numTimes = 1)
+        public ActionResult Welcome(string name, int numTimes = 1)
         {
-            return HttpUtility.HtmlEncode("Hello " + name + ", numtimes is " + numTimes);
-            //return "This is the Welcome action method...";
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+
+            return View();
         }
-	}
+    }
 }

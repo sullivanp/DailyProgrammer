@@ -10,29 +10,6 @@ namespace XcomSquadGenerator
     {
         private RandomSoldierGenerator randomSoldierGenerator;
         private RandomNonSoldierGenerator randomNonSoldierGenerator;
-
-        /*
-        public Soldier RandomSoldier
-        {
-            get
-            {
-                return null;
-            }
-            private set
-            {
-                RandomSoldier = value;
-            }
-        }
-
-        public NonSoldier RandomNonSoldier
-        {
-            get
-            {
-                return randomNonSoldierGenerator.RandomNonSoldier;
-            }
-        }
-        */
-
         public RandomUnitGenerator(RandomSoldierGenerator randomSoldierGenerator, RandomNonSoldierGenerator randomNonSoldierGenerator)
         {
             this.randomNonSoldierGenerator = randomNonSoldierGenerator;

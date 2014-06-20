@@ -41,12 +41,22 @@ namespace XcomSquadGenerator
 
             Squad randomSquad = randomSquadGenerator.GenerateRandomSquad(1000000);
 
-            foreach (Unit unit in randomSquad.Units)
+            if(randomSquad.Points == 0)
             {
-                System.Console.WriteLine(unit.Points + "\t" + unit.Type);
+                System.Console.WriteLine("Could not generate random squad with the given parameters.");
+            } else
+            {
+                foreach (Unit unit in randomSquad.Units)
+                {
+                    if (unit == null)
+                    {
+                        break;
+                    }
+                    System.Console.WriteLine(unit.Points + "\t" + unit.Type);
+                }
+                System.Console.WriteLine("Total:\t" + randomSquad.Points);
             }
 
-            System.Console.WriteLine("Total:\t" + randomSquad.Points);
             System.Console.ReadKey();
         }
     }

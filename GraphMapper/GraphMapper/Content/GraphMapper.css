@@ -1,0 +1,46 @@
+﻿body {
+}
+
+#map {
+    width: 600px;
+    height: 600px;
+    float: left;
+    border: 1px solid #ffffff;
+    background: #7f7f7f;
+}
+
+#commands {
+    height: 100px;
+    width: 700px;
+    border: 1px solid #ff0000;
+    background: #7f0000;
+}
+
+#shapes {
+    width: 100px;
+    height: 600px;
+    float: left;
+    border: 1px solid #00ff00;
+    background: #007f00;
+}
+
+#preview {
+    width: 100px;
+    height: 100px;
+    clear: both;
+    float: left;
+    border: 1px solid #0000ff;
+    background: #00007f;
+}
+
+#colors {
+    height: 100px;
+    width: 600px;
+    float: left;
+    border: 1px solid #ffff00;
+    background: #7f7f00;
+}
+
+footer {
+    clear: both;
+}
