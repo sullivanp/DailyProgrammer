@@ -5,12 +5,14 @@ using System.Web;
 //using System.Drawing.Bitmap;
 //using System.Drawing.Color;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations;
 
 namespace GraphMapper.Models
 {
     public class Tile
     {
-
+        [Key]
+        public int ID { get; set; }
         public string Shape { get; set; }
         public Color Color { get; set; }
         public Bitmap Icon { get; set; }

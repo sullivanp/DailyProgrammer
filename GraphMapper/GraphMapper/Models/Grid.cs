@@ -14,7 +14,7 @@ namespace GraphMapper.Models
         public int Rows { get; set; }
         public int Cols { get; set; }
 
-        
+       
       
         // default constructor
         public Grid()
