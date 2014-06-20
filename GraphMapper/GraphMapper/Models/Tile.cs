@@ -15,14 +15,14 @@ namespace GraphMapper.Models
         public int ID { get; set; }
         public string Shape { get; set; }
         public Color Color { get; set; }
-        public Bitmap Icon { get; set; }
+        //public Bitmap Icon { get; set; }
 
         // overloaded constructor
         public Tile(string Shape, Color Color)
         {
             this.Shape = Shape;
             this.Color = Color;
-            Icon = CreateBitmap(Shape, Color);
+            //Icon = CreateBitmap(Shape, Color);
         }
 
         // default constructor
