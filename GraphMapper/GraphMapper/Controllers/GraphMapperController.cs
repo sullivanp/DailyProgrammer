@@ -17,7 +17,7 @@ namespace GraphMapper.Controllers
         // GET: GraphMapper
         public ActionResult Index()
         {
-            return View(db.Grid.ToList());
+            return View(db.Grids.ToList());
         }
 
         // GET: GraphMapper/Details/5
@@ -27,11 +27,13 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grid.Find(id);
+            Grid grid = db.Grids.Find(id);
             if (grid == null)
             {
                 return HttpNotFound();
             }
+            ViewData["MapCols"] = grid.Cols;
+            ViewData["MapRows"] = grid.Rows;
             return View(grid);
         }
 
@@ -46,11 +48,11 @@ namespace GraphMapper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Rows,Cols")] Grid grid)
+        public ActionResult Create([Bind(Include = "GridID,Rows,Cols")] Grid grid)
         {
             if (ModelState.IsValid)
             {
-                db.Grid.Add(grid);
+                db.Grids.Add(grid);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +67,7 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grid.Find(id);
+            Grid grid = db.Grids.Find(id);
             if (grid == null)
             {
                 return HttpNotFound();
@@ -78,7 +80,7 @@ namespace GraphMapper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Rows,Cols")] Grid grid)
+        public ActionResult Edit([Bind(Include = "GridID,Rows,Cols")] Grid grid)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +98,7 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grid.Find(id);
+            Grid grid = db.Grids.Find(id);
             if (grid == null)
             {
                 return HttpNotFound();
@@ -109,8 +111,8 @@ namespace GraphMapper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Grid grid = db.Grid.Find(id);
-            db.Grid.Remove(grid);
+            Grid grid = db.Grids.Find(id);
+            db.Grids.Remove(grid);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -223,16 +223,16 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\GraphMapper\Index.cshtml" />
-    <Content Include="Views\GraphMapper\Welcome.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\GraphMapper\Create.cshtml" />
     <Content Include="Views\GraphMapper\Delete.cshtml" />
     <Content Include="Views\GraphMapper\Details.cshtml" />
     <Content Include="Views\GraphMapper\Edit.cshtml" />
+    <Content Include="Views\GraphMapper\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\TileShapes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -9,26 +9,9 @@
 <div>
     <h4>Grid</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Rows)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rows)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cols)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cols)
-        </dd>
-
-    </dl>
+    <article id="map"></article>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+<p style="clear: both">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GridID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

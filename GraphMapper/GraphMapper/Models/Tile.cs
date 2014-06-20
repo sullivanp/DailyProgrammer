@@ -12,10 +12,16 @@ namespace GraphMapper.Models
     public class Tile
     {
         [Key]
-        public int ID { get; set; }
+        public int TileID { get; set; }
         public string Shape { get; set; }
         public Color Color { get; set; }
         //public Bitmap Icon { get; set; }
+
+        public int GridID { get; set; }
+        public int GridRow;
+        public int GridCol;
+
+        public virtual Grid Grid { get; set; }
 
         // overloaded constructor
         public Tile(string Shape, Color Color)
@@ -30,16 +36,14 @@ namespace GraphMapper.Models
         {
             this.Shape = "Blank.bmp";
             this.Color = Color.Empty;
-            CreateBitmap("Blank.bmp", Color.Empty);
+            //CreateBitmap("Blank.bmp", Color.Empty);
         }
-
 
         // replaces template color with selected color on selected shape
         public Bitmap CreateBitmap(string Shape, Color color)
         {
             Bitmap Bitmap = new Bitmap(Shape);
            
-
             for (int x = 0; x < Bitmap.Width; x++)
             {
                 for(int y = 0; y < Bitmap.Height; y++)
@@ -49,17 +53,7 @@ namespace GraphMapper.Models
                     Bitmap.SetPixel(x, y, gotColor);
                 }
             }
-            
-                return Bitmap;
-
+            return Bitmap;
         }
-
-     
-
-
     }
-
-
-    
-    
 }
