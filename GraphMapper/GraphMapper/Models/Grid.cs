@@ -6,18 +6,18 @@ namespace GraphMapper.Models
     public class Grid
     {
         // 2d array to store Tile objects
-        Tile[,] Grid;
+        Tile[,] GridMap;
       
         // default constructor
         public Grid()
         {
-            Grid = new Tile[12, 12]; // default grid 12x12
+            GridMap = new Tile[12, 12]; // default grid 12x12
         }
 
         // overloaded constructor
         public Grid(int Rows, int Cols)
         {
-            Grid = new Tile[Rows, Cols];
+            GridMap = new Tile[Rows, Cols];
         }
 
 
