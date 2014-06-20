@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
 namespace GraphMapper.Models
@@ -7,6 +8,7 @@ namespace GraphMapper.Models
     {
         // 2d array to store Tile objects
         public Tile[,] GridMap { get; set; }
+        [Key]
         public int ID { get; set; }
 
         public int Rows { get; set; }
