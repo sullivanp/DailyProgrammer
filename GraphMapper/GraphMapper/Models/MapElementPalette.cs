@@ -6,17 +6,16 @@ using System.Web;
 
 namespace GraphMapper.Models
 {
-    public class GraphMap
+    public class MapElementPalette
     {
         public int ID { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
         [StringLength(32)]
         public string Name { get; set; }
+        public int Order { get; set; }
+        public int Rows { get; set; }
+        public int Columns { get; set; }
         public virtual GraphMapperUser Owner { get; set; }
         public virtual GraphMapperUser Creator { get; set; }
-        public virtual ShapePalette DefaultShapePalette { get; set; }
-        public virtual ColorPalette DefaultColorPalette { get; set; }
         public virtual ICollection<MapElement> MapElements { get; set; }
     }
 }

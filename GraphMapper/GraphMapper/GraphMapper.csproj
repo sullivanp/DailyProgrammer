@@ -170,6 +170,7 @@
     <Compile Include="Models\GraphMapperUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MapElement.cs" />
+    <Compile Include="Models\MapElementPalette.cs" />
     <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\ShapePalette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

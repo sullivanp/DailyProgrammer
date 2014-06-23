@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace GraphMapper.Models
     public class ColorPalette
     {
         public int ID { get; set; }
+        [StringLength(32)]
         public string Name { get; set; }
         public int Order { get; set; }
         public int Rows { get; set; }
