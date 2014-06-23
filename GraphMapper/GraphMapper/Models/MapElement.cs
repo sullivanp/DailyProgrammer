@@ -9,12 +9,10 @@ namespace GraphMapper.Models
     {
         public int ID { get; set; }
         public int GraphMapID { get; set; }
-        public int BackgroundRed { get; set; }
-        public int BackgroundGreen { get; set; }
-        public int BackgroundBlue { get; set; }
-        public int ForegroundRed { get; set; }
-        public int ForegroundGreen { get; set; }
-        public int ForegroundBlue { get; set; }
-        public Shape Shape { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public virtual Color BackgroundColor { get; set; }
+        public virtual Color ForegroundColor { get; set; }
+        public virtual Shape Shape { get; set; }
     }
 }

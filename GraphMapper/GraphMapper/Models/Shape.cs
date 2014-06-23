@@ -10,6 +10,7 @@ namespace GraphMapper.Models
         public int ID { get; set; }
         public int OwnerID { get; set; }
         public bool OwnerIsMapElement { get; set; }
+        public int Order { get; set; }
         public string ShortName { get; set; }
         public string TypeExtension { get; set; }
         public string FileNameExtensionSeparator { get; set; }
