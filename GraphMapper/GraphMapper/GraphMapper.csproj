@@ -167,6 +167,7 @@
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\ColorPalette.cs" />
     <Compile Include="Models\GraphMap.cs" />
+    <Compile Include="Models\GraphMapperContext.cs" />
     <Compile Include="Models\GraphMapperUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MapElement.cs" />

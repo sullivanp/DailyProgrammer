@@ -21,14 +21,17 @@ namespace GraphMapper.Models
         public int Row { get; set; }
         public int Column { get; set; }
 
+        public string FileName
+        {
+            get
+            {
+                return ShortName + FileNameExtensionSeparator + TypeExtension;
+            }
+        }
+
         public Shape()
         {
             this.FileNameExtensionSeparator = ".";
-        }
-
-        public string GetFileName()
-        {
-            return ShortName + FileNameExtensionSeparator + TypeExtension;
         }
     }
 }
