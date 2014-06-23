@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GraphMapper.Models
 {
-    public abstract class Shape
+    public class Shape
     {
         public int ID { get; set; }
         public int OwnerID { get; set; }

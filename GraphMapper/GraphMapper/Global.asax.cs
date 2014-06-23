@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +17,13 @@ namespace GraphMapper
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            using(var db = new GraphMapper.Models.GraphMapperContext())
+            {
+                var GraphMap = new GraphMapper.Models.GraphMap();
+                //DbMigrationsConfiguration.AutomaticMigrationsEnabled
+                db.GraphMaps.Add(GraphMap);
+                db.SaveChanges();
+            }
         }
     }
 }

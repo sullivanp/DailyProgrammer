@@ -9,7 +9,7 @@ namespace GraphMapper.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(GraphMapper.Models.GraphMapperContext context)
