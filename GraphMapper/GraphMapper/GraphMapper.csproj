@@ -164,7 +164,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ColorPalette.cs" />
+    <Compile Include="Models\GraphMap.cs" />
+    <Compile Include="Models\GraphMapperUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MapElement.cs" />
+    <Compile Include="Models\Shape.cs" />
+    <Compile Include="Models\ShapePalette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
