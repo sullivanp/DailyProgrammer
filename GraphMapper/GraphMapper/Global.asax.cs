@@ -20,7 +20,6 @@ namespace GraphMapper
             using(var db = new GraphMapper.Models.GraphMapperContext())
             {
                 var GraphMap = new GraphMapper.Models.GraphMap();
-                //DbMigrationsConfiguration.AutomaticMigrationsEnabled
                 db.GraphMaps.Add(GraphMap);
                 db.SaveChanges();
             }

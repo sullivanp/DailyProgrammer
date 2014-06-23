@@ -1,6 +1,8 @@
 namespace GraphMapper.Migrations
 {
+    using GraphMapper.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -12,7 +14,7 @@ namespace GraphMapper.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(GraphMapper.Models.GraphMapperContext context)
+        protected override void Seed(GraphMapperContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -26,6 +28,15 @@ namespace GraphMapper.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var colors = new List<Color>
+            {
+                new Color { Order = 0, Red = 255, Green = 0, Blue = 0, Name = "Red" },
+                new Color { Order = 1, Red = 0, Green = 255, Blue = 0, Name = "Green" },
+                new Color { Order = 2, Red = 0, Green = 0, Blue = 255, Name = "Blue" }
+            };
+
+            colors.ForEach(s => context.Colors.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
         }
     }
 }
