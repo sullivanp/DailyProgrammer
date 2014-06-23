@@ -1,4 +1,4 @@
-﻿@model GraphMapper.Models.Grid
+﻿@model GraphMapper.Models.GraphMapperApp
 
 @{
     ViewBag.Title = "Details";
@@ -7,11 +7,12 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Grid</h4>
+    <h4>GraphMapperApp</h4>
     <hr />
-    <article id="map"></article>
+    <dl class="dl-horizontal">
+    </dl>
 </div>
-<p style="clear: both">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GridID }) |
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GraphMapperID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

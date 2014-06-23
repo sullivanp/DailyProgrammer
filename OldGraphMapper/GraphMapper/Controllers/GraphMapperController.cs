@@ -12,12 +12,12 @@ namespace GraphMapper.Controllers
 {
     public class GraphMapperController : Controller
     {
-        private GridDBContext db = new GridDBContext();
+        private GraphMapperDBContext db = new GraphMapperDBContext();
 
         // GET: GraphMapper
         public ActionResult Index()
         {
-            return View(db.Grids.ToList());
+            return View(db.GraphMappers.ToList());
         }
 
         // GET: GraphMapper/Details/5
@@ -27,14 +27,12 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grids.Find(id);
-            if (grid == null)
+            GraphMapperApp graphMapperApp = db.GraphMappers.Find(id);
+            if (graphMapperApp == null)
             {
                 return HttpNotFound();
             }
-            ViewData["MapCols"] = grid.Cols;
-            ViewData["MapRows"] = grid.Rows;
-            return View(grid);
+            return View(graphMapperApp);
         }
 
         // GET: GraphMapper/Create
@@ -48,16 +46,16 @@ namespace GraphMapper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GridID,Rows,Cols")] Grid grid)
+        public ActionResult Create([Bind(Include = "GraphMapperID")] GraphMapperApp graphMapperApp)
         {
             if (ModelState.IsValid)
             {
-                db.Grids.Add(grid);
+                db.GraphMappers.Add(graphMapperApp);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(grid);
+            return View(graphMapperApp);
         }
 
         // GET: GraphMapper/Edit/5
@@ -67,12 +65,12 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grids.Find(id);
-            if (grid == null)
+            GraphMapperApp graphMapperApp = db.GraphMappers.Find(id);
+            if (graphMapperApp == null)
             {
                 return HttpNotFound();
             }
-            return View(grid);
+            return View(graphMapperApp);
         }
 
         // POST: GraphMapper/Edit/5
@@ -80,15 +78,15 @@ namespace GraphMapper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GridID,Rows,Cols")] Grid grid)
+        public ActionResult Edit([Bind(Include = "GraphMapperID")] GraphMapperApp graphMapperApp)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(grid).State = EntityState.Modified;
+                db.Entry(graphMapperApp).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(grid);
+            return View(graphMapperApp);
         }
 
         // GET: GraphMapper/Delete/5
@@ -98,12 +96,12 @@ namespace GraphMapper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grid grid = db.Grids.Find(id);
-            if (grid == null)
+            GraphMapperApp graphMapperApp = db.GraphMappers.Find(id);
+            if (graphMapperApp == null)
             {
                 return HttpNotFound();
             }
-            return View(grid);
+            return View(graphMapperApp);
         }
 
         // POST: GraphMapper/Delete/5
@@ -111,8 +109,8 @@ namespace GraphMapper.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Grid grid = db.Grids.Find(id);
-            db.Grids.Remove(grid);
+            GraphMapperApp graphMapperApp = db.GraphMappers.Find(id);
+            db.GraphMappers.Remove(graphMapperApp);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
