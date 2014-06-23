@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GraphMapper.Models.Grid>
+﻿@model IEnumerable<GraphMapper.Models.GraphMapperApp>
 
 @{
     ViewBag.Title = "Index";
@@ -11,27 +11,15 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Rows)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cols)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Rows)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cols)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GridID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GridID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GridID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.GraphMapperID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GraphMapperID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GraphMapperID })
         </td>
     </tr>
 }
