@@ -28,5 +28,16 @@ namespace GraphMapper.Models
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            /*
+            modelBuilder.Ignore<Shape>();
+            modelBuilder.Ignore<Color>();
+            modelBuilder.Ignore<ShapePalette>();
+            modelBuilder.Ignore<ColorPalette>();
+             */
+        }
     }
 }

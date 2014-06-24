@@ -9,6 +9,7 @@ namespace GraphMapper.Models
     public class GraphMap
     {
         public int ID { get; set; }
+        public int Order { get; set; }
         [Range(0, 1000)]
         public int Rows { get; set; }
         [Range(0, 1000)]

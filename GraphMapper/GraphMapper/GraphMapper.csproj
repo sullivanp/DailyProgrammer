@@ -170,6 +170,14 @@
     <Compile Include="Migrations\201406232343447_SeedTest.Designer.cs">
       <DependentUpon>201406232343447_SeedTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs" />
+    <Compile Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.Designer.cs">
+      <DependentUpon>201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.cs" />
+    <Compile Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.Designer.cs">
+      <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Color.cs" />
@@ -188,6 +196,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Shapes\CenteredHorizontalLine.png" />
+    <Content Include="Content\Shapes\CenteredVerticalLine.png" />
+    <Content Include="Content\Shapes\Circle.png" />
+    <Content Include="Content\Shapes\HollowBox.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -255,6 +267,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201406232343447_SeedTest.resx">
       <DependentUpon>201406232343447_SeedTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.resx">
+      <DependentUpon>201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.resx">
+      <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

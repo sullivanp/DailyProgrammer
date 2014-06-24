@@ -11,8 +11,7 @@ namespace GraphMapper.Models
         public int ID { get; set; }
         public int OwnerID { get; set; }
         public bool OwnerIsMapElement { get; set; }
-        public int Order { get; set; }
-        [StringLength(32)]
+        [StringLength(32), Required]
         public string ShortName { get; set; }
         [StringLength(3)]
         public string TypeExtension { get; set; }
