@@ -18,7 +18,9 @@ namespace GraphMapper.Models
         public string TypeExtension { get; set; }
         [StringLength(1)]
         public string FileNameExtensionSeparator { get; set; }
+        [Range(0, 1000)]
         public int Row { get; set; }
+        [Range(0, 1000)]
         public int Column { get; set; }
 
         public string FileName

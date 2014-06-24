@@ -12,7 +12,9 @@ namespace GraphMapper.Models
         [StringLength(32)]
         public string Name { get; set; }
         public int Order { get; set; }
+        [Range(0, 1000)]
         public int Rows { get; set; }
+        [Range(0, 1000)]
         public int Columns { get; set; }
         public virtual GraphMapperUser Owner { get; set; }
         public virtual GraphMapperUser Creator { get; set; }

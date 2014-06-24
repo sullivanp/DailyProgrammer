@@ -32,7 +32,9 @@ namespace GraphMapper.Migrations
             {
                 new Color { Order = 0, Red = 255, Green = 0, Blue = 0, Name = "Red" },
                 new Color { Order = 1, Red = 0, Green = 255, Blue = 0, Name = "Green" },
-                new Color { Order = 2, Red = 0, Green = 0, Blue = 255, Name = "Blue" }
+                new Color { Order = 2, Red = 0, Green = 0, Blue = 255, Name = "Blue" },
+                new Color { Order = 3, Red = 0, Green = 0, Blue = 0, Name = "Black" },
+                new Color { Order = 4, Red = 255, Green = 255, Blue = 255, Name = "White" }
             };
 
             colors.ForEach(s => context.Colors.AddOrUpdate(p => p.Name, s));

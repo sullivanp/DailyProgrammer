@@ -9,7 +9,9 @@ namespace GraphMapper.Models
     public class GraphMap
     {
         public int ID { get; set; }
+        [Range(0, 1000)]
         public int Rows { get; set; }
+        [Range(0, 1000)]
         public int Columns { get; set; }
         [StringLength(32)]
         public string Name { get; set; }
