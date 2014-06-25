@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +10,6 @@ namespace GraphMapper.Models
     public class Shape
     {
         public int ID { get; set; }
-        public int OwnerID { get; set; }
-        public bool OwnerIsMapElement { get; set; }
         [StringLength(32), Required]
         public string ShortName { get; set; }
         [StringLength(3)]
