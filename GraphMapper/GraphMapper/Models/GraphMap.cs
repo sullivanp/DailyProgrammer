@@ -23,5 +23,24 @@ namespace GraphMapper.Models
         public virtual ColorPalette DefaultColorPalette { get; set; }
         public virtual ICollection<MapElement> MapElements { get; set; }
         public DateTime Updated { get; set; }
+        public DateTime Created { get; set; }
+
+        private static int LastOrderUsed { get; set; }
+        private static int UntitledNumber { get; set; }
+
+        static GraphMap()
+        {
+            LastOrderUsed = 500;
+            UntitledNumber = 1;
+        }
+
+        public GraphMap()
+        {
+            Order = ++LastOrderUsed;
+            Rows = Columns = 0;
+            MapElements = new Collection<MapElement>();
+            Created = Updated = DateTime.Now;
+            Name = "Untitled #" + ++UntitledNumber;
+        }
     }
 }

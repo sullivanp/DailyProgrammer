@@ -16,6 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Updated)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Rows, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -47,6 +48,16 @@
             </div>
         </div>
     </div>
+
+    string graphMapWidth = ViewBag.GraphMapWidth + "px";
+    string graphMapHeight = ViewBag.GraphMapHeight + "px";
+
+    <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
+        @foreach (var item in Model.MapElements)
+        {
+            <img src="@ViewBag.ImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+        }
+    </article>
 }
 
 <div>
