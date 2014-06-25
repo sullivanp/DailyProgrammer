@@ -17,12 +17,6 @@ namespace GraphMapper
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            using(var db = new GraphMapper.Models.GraphMapperContext())
-            {
-                var GraphMap = new GraphMapper.Models.GraphMap();
-                db.GraphMaps.Add(GraphMap);
-                db.SaveChanges();
-            }
         }
     }
 }

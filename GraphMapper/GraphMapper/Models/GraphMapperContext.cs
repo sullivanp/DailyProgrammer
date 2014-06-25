@@ -25,7 +25,12 @@ namespace GraphMapper.Models
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-            modelBuilder.Entity<MapElement>().Property(m => m.GraphMapID).IsOptional();
+            //modelBuilder.Entity<MapElement>().Property(m => m.GraphMapID).IsOptional();
+            modelBuilder.Entity<MapElement>()
+                .HasOptional(t => t.GraphMap)
+                .WithMany(t => t.MapElements)
+                .HasForeignKey(d => d.GraphMapID)
+                .WillCascadeOnDelete(true);
         }
     }
 }

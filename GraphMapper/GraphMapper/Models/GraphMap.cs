@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -21,5 +22,6 @@ namespace GraphMapper.Models
         public virtual ShapePalette DefaultShapePalette { get; set; }
         public virtual ColorPalette DefaultColorPalette { get; set; }
         public virtual ICollection<MapElement> MapElements { get; set; }
+        public DateTime Updated { get; set; }
     }
 }

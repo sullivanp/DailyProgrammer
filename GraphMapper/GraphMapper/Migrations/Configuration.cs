@@ -79,13 +79,14 @@ namespace GraphMapper.Migrations
             );
             context.SaveChanges();
 
-            context.GraphMaps.AddOrUpdate(g => g.Name,
+            context.GraphMaps.AddOrUpdate(g => new { g.Name, g.Updated },
                 new GraphMap
                 {
                     Order = 0,
                     Columns = 2,
                     Rows = 2,
                     Name = "2x2 Sample Map",
+                    Updated = new DateTime(2014, 6, 25, 10, 30, 0),
                     MapElements = new List<MapElement>
                     {
                         new MapElement
@@ -93,28 +94,28 @@ namespace GraphMapper.Migrations
                             Row = 0, Column = 0,
                             BackgroundColor = new Color { Name = "White", Order = 16, Red = 255, Green = 255, Blue = 255 },
                             ForegroundColor = new Color { Name = "Black", Order = 17, Red = 0, Green = 0, Blue = 0 },
-                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "Circle", TypeExtension = "png" }
+                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "SolidFilledBox", TypeExtension = "png" }
                         },
                         new MapElement
                         {
                             Row = 0, Column = 1,
                             BackgroundColor = new Color { Name = "White", Order = 18, Red = 255, Green = 255, Blue = 255 },
-                            ForegroundColor = new Color { Name = "Black", Order = 19, Red = 0, Green = 0, Blue = 0 },
-                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "Circle", TypeExtension = "png" }
+                            ForegroundColor = new Color { Name = "Red", Order = 19, Red = 255, Green = 0, Blue = 0 },
+                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "SolidFilledBox", TypeExtension = "png" }
                         },
                         new MapElement
                         {
                             Row = 1, Column = 0,
                             BackgroundColor = new Color { Name = "White", Order = 20, Red = 255, Green = 255, Blue = 255 },
-                            ForegroundColor = new Color { Name = "Black", Order = 21, Red = 0, Green = 0, Blue = 0 },
-                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "Circle", TypeExtension = "png" }
+                            ForegroundColor = new Color { Name = "Green", Order = 21, Red = 0, Green = 255, Blue = 0 },
+                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "SolidFilledBox", TypeExtension = "png" }
                         },
                         new MapElement
                         {
                             Row = 1, Column = 1,
                             BackgroundColor = new Color { Name = "White", Order = 22, Red = 255, Green = 255, Blue = 255 },
-                            ForegroundColor = new Color { Name = "Black", Order = 23, Red = 0, Green = 0, Blue = 0 },
-                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "Circle", TypeExtension = "png" }
+                            ForegroundColor = new Color { Name = "Blue", Order = 23, Red = 0, Green = 0, Blue = 255 },
+                            Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 0, ShortName = "SolidFilledBox", TypeExtension = "png" }
                         },
                     },
                     DefaultColorPalette = new ColorPalette
@@ -144,6 +145,7 @@ namespace GraphMapper.Migrations
                     Columns = 3,
                     Rows = 3,
                     Name = "3x3 Sample Map",
+                    Updated = new DateTime(2014, 6, 25, 10, 31, 0),
                     MapElements = new List<MapElement>
                     {
                         new MapElement
@@ -156,7 +158,7 @@ namespace GraphMapper.Migrations
                         new MapElement
                         {
                             Row = 0, Column = 1,
-                            BackgroundColor = new Color { Name = "White", Order = 26, Red = 255, Green = 255, Blue = 255 },
+                            BackgroundColor = new Color { Name = "Red", Order = 26, Red = 255, Green = 0, Blue = 0 },
                             ForegroundColor = new Color { Name = "Black", Order = 27, Red = 0, Green = 0, Blue = 0 },
                             Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 1, ShortName = "CenteredVerticalLine", TypeExtension = "png" }
                         },
@@ -170,21 +172,21 @@ namespace GraphMapper.Migrations
                         new MapElement
                         {
                             Row = 1, Column = 0,
-                            BackgroundColor = new Color { Name = "White", Order = 30, Red = 255, Green = 255, Blue = 255 },
+                            BackgroundColor = new Color { Name = "Blue", Order = 30, Red = 0, Green = 0, Blue = 255 },
                             ForegroundColor = new Color { Name = "Black", Order = 31, Red = 0, Green = 0, Blue = 0 },
                             Shape = new Shape { FileNameExtensionSeparator = ".", Row = 1, Column = 0, ShortName = "CenteredHorizontalLine", TypeExtension = "png" }
                         },
                         new MapElement
                         {
                             Row = 1, Column = 1,
-                            BackgroundColor = new Color { Name = "White", Order = 32, Red = 255, Green = 255, Blue = 255 },
-                            ForegroundColor = new Color { Name = "Black", Order = 33, Red = 0, Green = 0, Blue = 0 },
+                            BackgroundColor = new Color { Name = "Red", Order = 32, Red = 255, Green = 0, Blue = 0 },
+                            ForegroundColor = new Color { Name = "Blue", Order = 33, Red = 0, Green = 0, Blue = 255 },
                             Shape = new Shape { FileNameExtensionSeparator = ".", Row = 1, Column = 1, ShortName = "HollowBox", TypeExtension = "png" }
                         },
                         new MapElement
                         {
                             Row = 1, Column = 2,
-                            BackgroundColor = new Color { Name = "White", Order = 34, Red = 255, Green = 255, Blue = 255 },
+                            BackgroundColor = new Color { Name = "Blue", Order = 34, Red = 0, Green = 0, Blue = 255 },
                             ForegroundColor = new Color { Name = "Black", Order = 35, Red = 0, Green = 0, Blue = 0 },
                             Shape = new Shape { FileNameExtensionSeparator = ".", Row = 1, Column = 0, ShortName = "CenteredHorizontalLine", TypeExtension = "png" }
                         },
@@ -198,7 +200,7 @@ namespace GraphMapper.Migrations
                         new MapElement
                         {
                             Row = 2, Column = 1,
-                            BackgroundColor = new Color { Name = "White", Order = 38, Red = 255, Green = 255, Blue = 255 },
+                            BackgroundColor = new Color { Name = "Red", Order = 38, Red = 255, Green = 0, Blue = 0 },
                             ForegroundColor = new Color { Name = "Black", Order = 39, Red = 0, Green = 0, Blue = 0 },
                             Shape = new Shape { FileNameExtensionSeparator = ".", Row = 0, Column = 1, ShortName = "CenteredVerticalLine", TypeExtension = "png" }
                         },

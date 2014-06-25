@@ -10,7 +10,8 @@ namespace GraphMapper.Models
     public class MapElement
     {
         public int ID { get; set; }
-        public int GraphMapID { get; set; }
+        public int? GraphMapID { get; set; }
+        public virtual GraphMap GraphMap { get; set; }
         [Range(0, 1000)]
         public int Row { get; set; }
         [Range(0, 1000)]
