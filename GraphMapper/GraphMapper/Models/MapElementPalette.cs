@@ -9,7 +9,7 @@ namespace GraphMapper.Models
     public class MapElementPalette
     {
         public int ID { get; set; }
-        [StringLength(32)]
+        [StringLength(64)]
         public string Name { get; set; }
         public int Order { get; set; }
         [Range(0, 1000)]

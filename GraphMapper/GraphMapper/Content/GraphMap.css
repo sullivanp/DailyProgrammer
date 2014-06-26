@@ -1,14 +1,15 @@
 ﻿body {
 }
 
-.graphmap {
+.graphmap, .shapepalette, .colorpalette {
     position: relative;
 }
 
-.graphmap img {
+.graphmap img, .shapepalette img, .colorpalette img {
     position: absolute; 
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     border: 1px dashed gray;
 }
+

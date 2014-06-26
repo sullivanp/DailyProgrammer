@@ -33,8 +33,6 @@ namespace GraphMapper.Controllers
             {
                 return HttpNotFound();
             }
-            int imageWidth;
-            int imageHeight;
             ViewBag.ImageFilenames = new string[graphMap.Rows, graphMap.Columns];
             ViewBag.ImageLefts = new int[graphMap.Rows, graphMap.Columns];
             ViewBag.ImageTops = new int[graphMap.Rows, graphMap.Columns];
@@ -44,38 +42,19 @@ namespace GraphMapper.Controllers
                 {
                     MapElement mapElement = graphMap.MapElements.Single(e => e.Row == row && e.Column == column);
                     string imageFilename = mapElement.Shape.FileName;
-                    string imagePath = @"/Content/Shapes/";
-                    string tempImagePath = @"/Content/TempShapes/";
+                    string imagePath = Resources.ImageFilePath;
                     string imageTypeExtension = mapElement.Shape.TypeExtension;
                     string imageSeparator = mapElement.Shape.FileNameExtensionSeparator;
-                    string tempImageFilename = id + "_" + row + "_" + column + imageSeparator + imageTypeExtension;
-                    Bitmap image = new Bitmap(Server.MapPath(Url.Content(imagePath + imageFilename)));
-                    imageWidth = image.Width;
-                    imageHeight = image.Height;
-                    for (int x = 0; x < image.Width; x++)
-                    {
-                        for (int y = 0; y < image.Height; y++)
-                        {
-                            System.Drawing.Color pixelColor = image.GetPixel(x, y);
-                            System.Drawing.Color newColor;
-                            GraphMapper.Models.Color foregroundColor = mapElement.ForegroundColor;
-                            GraphMapper.Models.Color backgroundColor = mapElement.BackgroundColor;
-                            if (pixelColor.ToArgb() == System.Drawing.Color.Black.ToArgb())
-                            {
-                                newColor = System.Drawing.Color.FromArgb(foregroundColor.Red, foregroundColor.Green, foregroundColor.Blue);
-                            }
-                            else if (pixelColor.ToArgb() == System.Drawing.Color.White.ToArgb())
-                            {
-                                newColor = System.Drawing.Color.FromArgb(backgroundColor.Red, backgroundColor.Green, backgroundColor.Blue);
-                            } else
-                            {
-                                newColor = pixelColor;
-                            }
-                            image.SetPixel(x, y, newColor);
-                            image.Save(Server.MapPath(Url.Content(tempImagePath + tempImageFilename)));
-                        }
-                    } 
-                    ViewBag.ImageFilenames[row, column] = tempImagePath + tempImageFilename;
+                    string imageControllerName = "GraphMapperImages";
+                    string imageActionName = "GetImageFromMapElement";
+
+                    int imageWidth = CommonControllerUtils.GetImageWidth(
+                        Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                    int imageHeight = CommonControllerUtils.GetImageHeight(
+                        Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                    ViewBag.ImageFilenames[row, column] = "/" + imageControllerName + "/" + imageActionName + "/" + mapElement.ID;
                     ViewBag.ImageLefts[row, column] = imageWidth * column;
                     ViewBag.ImageTops[row, column] = imageHeight * row;
                     ViewBag.ImageWidth = imageWidth;
@@ -103,7 +82,7 @@ namespace GraphMapper.Controllers
             if (ModelState.IsValid)
             {
                 db.GraphMaps.Add(graphMap);
-                graphMap.Updated = DateTime.Now;
+                graphMap.Updated = graphMap.Created = DateTime.Now;
                 graphMap.MapElements = new List<MapElement>(graphMap.Rows * graphMap.Columns);
                 for (int row = 0; row != graphMap.Rows; row++ )
                 {
@@ -115,9 +94,9 @@ namespace GraphMapper.Controllers
                                 Row = row, Column = column, GraphMap = graphMap, GraphMapID = graphMap.ID,
                                 Shape = new Shape()
                                 {
-                                    FileNameExtensionSeparator = ".",
-                                    ShortName = "SolidFilledBox",
-                                    TypeExtension = "png"
+                                    FileNameExtensionSeparator = Resources.DefaultFileExtensionSeparator,
+                                    ShortName = Resources.DefaultImageShortName,
+                                    TypeExtension = Resources.DefaultImageTypeExtension
                                 },
                                 ForegroundColor = new GraphMapper.Models.Color()
                                 {
@@ -150,58 +129,61 @@ namespace GraphMapper.Controllers
             {
                 return HttpNotFound();
             }
-
-            int imageWidth;
-            int imageHeight;
             ViewBag.ImageFilenames = new string[graphMap.Rows, graphMap.Columns];
             ViewBag.ImageLefts = new int[graphMap.Rows, graphMap.Columns];
             ViewBag.ImageTops = new int[graphMap.Rows, graphMap.Columns];
-            for (int row = 0; row != graphMap.Rows; row++)
+            foreach(MapElement mapElement in graphMap.MapElements)
             {
-                for (int column = 0; column != graphMap.Columns; column++)
-                {
-                    MapElement mapElement = graphMap.MapElements.Single(e => e.Row == row && e.Column == column);
-                    string imageFilename = mapElement.Shape.FileName;
-                    string imagePath = @"/Content/Shapes/";
-                    string tempImagePath = @"/Content/TempShapes/";
-                    string imageTypeExtension = mapElement.Shape.TypeExtension;
-                    string imageSeparator = mapElement.Shape.FileNameExtensionSeparator;
-                    string tempImageFilename = id + "_" + row + "_" + column + imageSeparator + imageTypeExtension;
-                    Bitmap image = new Bitmap(Server.MapPath(Url.Content(imagePath + imageFilename)));
-                    imageWidth = image.Width;
-                    imageHeight = image.Height;
-                    for (int x = 0; x < image.Width; x++)
-                    {
-                        for (int y = 0; y < image.Height; y++)
-                        {
-                            System.Drawing.Color pixelColor = image.GetPixel(x, y);
-                            System.Drawing.Color newColor;
-                            GraphMapper.Models.Color foregroundColor = mapElement.ForegroundColor;
-                            GraphMapper.Models.Color backgroundColor = mapElement.BackgroundColor;
-                            if (pixelColor.ToArgb() == System.Drawing.Color.Black.ToArgb())
-                            {
-                                newColor = System.Drawing.Color.FromArgb(foregroundColor.Red, foregroundColor.Green, foregroundColor.Blue);
-                            }
-                            else if (pixelColor.ToArgb() == System.Drawing.Color.White.ToArgb())
-                            {
-                                newColor = System.Drawing.Color.FromArgb(backgroundColor.Red, backgroundColor.Green, backgroundColor.Blue);
-                            }
-                            else
-                            {
-                                newColor = pixelColor;
-                            }
-                            image.SetPixel(x, y, newColor);
-                            image.Save(Server.MapPath(Url.Content(tempImagePath + tempImageFilename)));
-                        }
-                    }
-                    ViewBag.ImageFilenames[row, column] = tempImagePath + tempImageFilename;
-                    ViewBag.ImageLefts[row, column] = imageWidth * column;
-                    ViewBag.ImageTops[row, column] = imageHeight * row;
-                    ViewBag.ImageWidth = imageWidth;
-                    ViewBag.ImageHeight = imageHeight;
-                    ViewBag.GraphMapWidth = imageWidth * graphMap.Rows;
-                    ViewBag.GraphMapHeight = imageHeight * graphMap.Columns;
-                }
+                string imageFilename = mapElement.Shape.FileName;
+                string imagePath = Resources.ImageFilePath;
+                string imageTypeExtension = mapElement.Shape.TypeExtension;
+                string imageSeparator = mapElement.Shape.FileNameExtensionSeparator;
+                string imageControllerName = "GraphMapperImages";
+                string imageActionName = "GetImageFromMapElement";
+
+                int imageWidth = CommonControllerUtils.GetImageWidth(
+                    Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                int imageHeight = CommonControllerUtils.GetImageHeight(
+                    Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                ViewBag.ImageFilenames[mapElement.Row, mapElement.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + mapElement.ID.ToString();
+                ViewBag.ImageLefts[mapElement.Row, mapElement.Column] = imageWidth * mapElement.Column;
+                ViewBag.ImageTops[mapElement.Row, mapElement.Column] = imageHeight * mapElement.Row;
+                ViewBag.ImageWidth = imageWidth;
+                ViewBag.ImageHeight = imageHeight;
+                ViewBag.GraphMapWidth = imageWidth * graphMap.Rows;
+                ViewBag.GraphMapHeight = imageHeight * graphMap.Columns;
+            }
+
+            ShapePalette shapePalette = graphMap.DefaultShapePalette;
+            ViewBag.ShapePalette = shapePalette;
+
+            ViewBag.ShapePaletteImageFilenames = new string[shapePalette.Rows, shapePalette.Columns];
+            ViewBag.ShapePaletteImageLefts = new int[shapePalette.Rows, shapePalette.Columns];
+            ViewBag.ShapePaletteImageTops = new int[shapePalette.Rows, shapePalette.Columns];
+            foreach (Shape shape in shapePalette.Shapes)
+            {
+                string imageFilename = shape.FileName;
+                string imagePath = Resources.ImageFilePath;
+                string imageTypeExtension = shape.TypeExtension;
+                string imageSeparator = shape.FileNameExtensionSeparator;
+                string imageControllerName = "GraphMapperImages";
+                string imageActionName = "GetImageFromShape";
+
+                int imageWidth = CommonControllerUtils.GetImageWidth(
+                    Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                int imageHeight = CommonControllerUtils.GetImageHeight(
+                    Server.MapPath(Url.Content(imagePath + imageFilename)));
+
+                ViewBag.ShapePaletteImageFilenames[shape.Row, shape.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + shape.ID;
+                ViewBag.ShapePaletteImageLefts[shape.Row, shape.Column] = imageWidth * shape.Column;
+                ViewBag.ShapePaletteImageTops[shape.Row, shape.Column] = imageHeight * shape.Row;
+                ViewBag.ShapePaletteImageWidth = imageWidth;
+                ViewBag.ShapePaletteImageHeight = imageHeight;
+                ViewBag.ShapePaletteWidth = imageWidth * shapePalette.Rows;
+                ViewBag.ShapePaletteHeight = imageHeight * shapePalette.Columns;
             }
 
             return View(graphMap);

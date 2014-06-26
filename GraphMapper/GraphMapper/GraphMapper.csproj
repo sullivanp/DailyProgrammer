@@ -162,8 +162,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ColorPalettesController.cs" />
+    <Compile Include="Controllers\CommonControllerUtils.cs" />
     <Compile Include="Controllers\GraphMapperController.cs" />
+    <Compile Include="Controllers\GraphMapperImagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShapePalettesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,11 +196,17 @@
     <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\ShapePalette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Colors\SolidFilledBox.png" />
     <Content Include="Content\graphmap.css" />
     <Content Include="Content\Shapes\CenteredHorizontalLine.png" />
     <Content Include="Content\Shapes\CenteredVerticalLine.png" />
@@ -256,9 +266,20 @@
     <Content Include="Views\GraphMapper\Details.cshtml" />
     <Content Include="Views\GraphMapper\Edit.cshtml" />
     <Content Include="Views\GraphMapper\Index.cshtml" />
+    <Content Include="Views\ShapePalettes\Create.cshtml" />
+    <Content Include="Views\ShapePalettes\Delete.cshtml" />
+    <Content Include="Views\ShapePalettes\Details.cshtml" />
+    <Content Include="Views\ShapePalettes\Edit.cshtml" />
+    <Content Include="Views\ShapePalettes\Index.cshtml" />
+    <Content Include="Views\ColorPalettes\Create.cshtml" />
+    <Content Include="Views\ColorPalettes\Delete.cshtml" />
+    <Content Include="Views\ColorPalettes\Details.cshtml" />
+    <Content Include="Views\ColorPalettes\Edit.cshtml" />
+    <Content Include="Views\ColorPalettes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\TempColors\" />
     <Folder Include="Content\TempShapes\" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +298,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.resx">
       <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

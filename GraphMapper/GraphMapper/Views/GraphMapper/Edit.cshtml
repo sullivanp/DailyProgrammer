@@ -52,11 +52,22 @@
     string graphMapHeight = ViewBag.GraphMapHeight + "px";
 
     <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
-        @foreach (var item in Model.MapElements)
+        @foreach (GraphMapper.Models.MapElement mapElement in Model.MapElements)
         {
-            <img src="@ViewBag.ImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+            <img src="@ViewBag.ImageFilenames[mapElement.Row, mapElement.Column]" style="left:@ViewBag.ImageLefts[mapElement.Row, mapElement.Column]px; top:@ViewBag.ImageTops[mapElement.Row, mapElement.Column]px;" />
         }
     </article>
+
+    string shapePaletteWidth = ViewBag.ShapePaletteWidth + "px";
+    string shapePaletteHeight = ViewBag.ShapePaletteHeight + "px";
+
+    <article class="shapepalette" style="width: @shapePaletteWidth; height: @shapePaletteHeight;">
+        @foreach (var item in Model.DefaultShapePalette.Shapes)
+        {
+            <img src="@ViewBag.ShapePaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ShapePaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ShapePaletteImageTops[item.Row, item.Column]px;" />
+        }
+    </article>
+
 }
 
 <div>

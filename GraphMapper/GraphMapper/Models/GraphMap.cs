@@ -15,7 +15,7 @@ namespace GraphMapper.Models
         public int Rows { get; set; }
         [Range(0, 1000)]
         public int Columns { get; set; }
-        [StringLength(32)]
+        [StringLength(64)]
         public string Name { get; set; }
         public virtual GraphMapperUser Owner { get; set; }
         public virtual GraphMapperUser Creator { get; set; }
@@ -30,7 +30,7 @@ namespace GraphMapper.Models
 
         static GraphMap()
         {
-            LastOrderUsed = 500;
+            LastOrderUsed = 70000;
             UntitledNumber = 1;
         }
 
@@ -40,7 +40,7 @@ namespace GraphMapper.Models
             Rows = Columns = 0;
             MapElements = new Collection<MapElement>();
             Created = Updated = DateTime.Now;
-            Name = "Untitled #" + ++UntitledNumber;
+            Name = "Untitled GraphMap #" + ++UntitledNumber;
         }
     }
 }
