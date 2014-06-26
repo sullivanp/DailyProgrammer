@@ -212,7 +212,7 @@ namespace GraphMapper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Rows,Columns,Name,Updated")] GraphMap graphMap)
+        public ActionResult Edit([Bind(Include = "ID,Rows,Columns,Name")] GraphMap graphMap)
         {
             if (graphMap.ID < 0)
             {
@@ -224,6 +224,7 @@ namespace GraphMapper.Controllers
             }
             if (ModelState.IsValid)
             {
+                graphMap.Updated = DateTime.Now;
                 db.Entry(graphMap).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
