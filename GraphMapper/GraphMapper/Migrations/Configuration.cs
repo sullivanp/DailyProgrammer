@@ -276,12 +276,12 @@ namespace GraphMapper.Migrations
                     Order = 1,
                     Columns = 3,
                     Rows = 2,
-                    Updated = new DateTime(2014, 6, 26, 8, 32, 10),
+                    Updated = new DateTime(2014, 6, 26, 9, 43, 10),
                     Colors = new List<Color>
                     {
-                        new Color { Row = 0, Column = 1, Order = 0, Red = 255, Green = 0, Blue = 0, Name = "Red" },
-                        new Color { Row = 0, Column = 2, Order = 1, Red = 0, Green = 255, Blue = 0, Name = "Green" },
-                        new Color { Row = 0, Column = 3, Order = 2, Red = 0, Green = 0, Blue = 255, Name = "Blue" },
+                        new Color { Row = 0, Column = 0, Order = 0, Red = 255, Green = 0, Blue = 0, Name = "Red" },
+                        new Color { Row = 0, Column = 1, Order = 1, Red = 0, Green = 255, Blue = 0, Name = "Green" },
+                        new Color { Row = 0, Column = 2, Order = 2, Red = 0, Green = 0, Blue = 255, Name = "Blue" },
                         new Color { Row = 1, Column = 0, Order = 3, Red = 0, Green = 0, Blue = 0, Name = "Black" },
                         new Color { Row = 1, Column = 1, Order = 4, Red = 255, Green = 255, Blue = 255, Name = "White" },
                     }

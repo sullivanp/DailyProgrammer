@@ -1,15 +1,43 @@
 ﻿body {
 }
 
-.graphmap, .shapepalette, .colorpalette {
+.graphmap, .shapepalette, .colorpalette, .preview, .graphmaptoolbar {
     position: relative;
+    margin: 30px;
 }
 
-.graphmap img, .shapepalette img, .colorpalette img {
+.graphmaptoolbar {
+    float: left;
+    clear: right;
+}
+
+.graphmap
+{
+    float: left;
+    clear: right;
+}
+
+.colorpalette {
+    float: left;
+    clear: right;
+}
+
+ .shapepalette
+ {
+     float: left;
+     clear: left;
+ }
+
+.preview {
+    float: left;
+    clear: left;
+    border: 1px dashed gray;
+}
+
+.graphmap img, .shapepalette img, .colorpalette img, .graphmaptoolbar img {
     position: absolute; 
-    padding: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
+    margin: 0px;
     border: 1px dashed gray;
 }
 

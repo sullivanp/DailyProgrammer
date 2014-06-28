@@ -167,6 +167,7 @@
     <Compile Include="Controllers\GraphMapperController.cs" />
     <Compile Include="Controllers\GraphMapperImagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ShapePalettesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,9 +209,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Colors\SolidFilledBox.png" />
     <Content Include="Content\graphmap.css" />
+    <Content Include="Content\Shapes\BackgroundColorIcon.png" />
+    <Content Include="Content\Shapes\BackgroundColorIcon32x32.png" />
     <Content Include="Content\Shapes\CenteredHorizontalLine.png" />
     <Content Include="Content\Shapes\CenteredVerticalLine.png" />
     <Content Include="Content\Shapes\Circle.png" />
+    <Content Include="Content\Shapes\ForegroundColorIcon.png" />
+    <Content Include="Content\Shapes\ForegroundColorIcon32x32.png" />
     <Content Include="Content\Shapes\HollowBox.png" />
     <Content Include="Content\Shapes\SolidFilledBox.png" />
     <Content Include="favicon.ico" />
@@ -276,11 +281,11 @@
     <Content Include="Views\ColorPalettes\Details.cshtml" />
     <Content Include="Views\ColorPalettes\Edit.cshtml" />
     <Content Include="Views\ColorPalettes\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\GraphMapper\SetMapElement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\TempColors\" />
-    <Folder Include="Content\TempShapes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

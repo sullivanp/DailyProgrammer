@@ -48,26 +48,75 @@
         </div>
     </div>
 
-    string graphMapWidth = ViewBag.GraphMapWidth + "px";
-    string graphMapHeight = ViewBag.GraphMapHeight + "px";
+    <div style="display:inline-block">
+        @{
+            
+        <div class="graphmaptoolbar" style="width: 66px; height: 34px;">
+            <a href="/Profile/SetSelectingForegroundColor/true">
+                <img src="~/Content/Shapes/ForegroundColorIcon32x32.png" style="left: 0px; top: 0px;" />
+            </a>
+            <a href="/Profile/SetSelectingForegroundColor/false">
+                <img src="~/Content/Shapes/BackgroundColorIcon32x32.png" style="left:33px; top: 0px;" />
+            </a>
+        </div>
+            
+        string shapePaletteWidth = ViewBag.ShapePaletteWidth + "px";
+        string shapePaletteHeight = ViewBag.ShapePaletteHeight + "px";
 
-    <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
-        @foreach (GraphMapper.Models.MapElement mapElement in Model.MapElements)
-        {
-            <img src="@ViewBag.ImageFilenames[mapElement.Row, mapElement.Column]" style="left:@ViewBag.ImageLefts[mapElement.Row, mapElement.Column]px; top:@ViewBag.ImageTops[mapElement.Row, mapElement.Column]px;" />
+        <article class="shapepalette" style="width: @shapePaletteWidth; height: @shapePaletteHeight;">
+            @foreach (var item in ViewBag.ShapePalette.Shapes)
+            {
+                <a href="/Profile/SetShapeID/@item.ID">
+                    <img src="@ViewBag.ShapePaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ShapePaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ShapePaletteImageTops[item.Row, item.Column]px;" />
+                </a>
+            }
+        </article>
+
+        string graphMapWidth = ViewBag.GraphMapWidth + "px";
+        string graphMapHeight = ViewBag.GraphMapHeight + "px";
+
+        <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
+            @foreach (GraphMapper.Models.MapElement mapElement in Model.MapElements)
+            {
+                if (ViewBag.ShapeID != -1 && ViewBag.ForegroundColorID != -1 && ViewBag.BackgroundColorID != -1)
+                {
+                    <a href="/GraphMapper/SetMapElement/@mapElement.ID">
+                        <img src="@ViewBag.ImageFilenames[mapElement.Row, mapElement.Column]" style="left:@ViewBag.ImageLefts[mapElement.Row, mapElement.Column]px; top:@ViewBag.ImageTops[mapElement.Row, mapElement.Column]px;" />
+                    </a>
+                }
+                else
+                {
+                    <img src="@ViewBag.ImageFilenames[mapElement.Row, mapElement.Column]" style="left:@ViewBag.ImageLefts[mapElement.Row, mapElement.Column]px; top:@ViewBag.ImageTops[mapElement.Row, mapElement.Column]px;" />
+                }
+            }
+        </article>
+
+        string previewImageWidthPx = ViewBag.PreviewImageWidth + 2 + "px";
+        string previewImageHeightPx = ViewBag.PreviewImageHeight + 2 + "px";
+
+        if(ViewBag.PreviewImageExists) {
+        <article class="preview" style="width: @previewImageWidthPx; height: @previewImageWidthPx;">
+            <img src="@ViewBag.PreviewImageFilename" width="@ViewBag.PreviewImageWidth" height="@ViewBag.PreviewImageHeight" />
+        </article>
         }
-    </article>
-
-    string shapePaletteWidth = ViewBag.ShapePaletteWidth + "px";
-    string shapePaletteHeight = ViewBag.ShapePaletteHeight + "px";
-
-    <article class="shapepalette" style="width: @shapePaletteWidth; height: @shapePaletteHeight;">
-        @foreach (var item in Model.DefaultShapePalette.Shapes)
+        else
         {
-            <img src="@ViewBag.ShapePaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ShapePaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ShapePaletteImageTops[item.Row, item.Column]px;" />
+        <article class="preview" style="width: @previewImageWidthPx; height: @previewImageHeightPx;"></article>
         }
-    </article>
 
+        string colorPaletteWidth = ViewBag.ColorPaletteWidth + "px";
+        string colorPaletteHeight = ViewBag.ColorPaletteHeight + "px";
+
+        <article class="colorpalette" style="width: @colorPaletteWidth; height: @colorPaletteHeight;">
+            @foreach (var item in ViewBag.ColorPalette.Colors)
+            {
+                <a href="/Profile/SetColorID/@item.ID">
+                    <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ColorPaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ColorPaletteImageTops[item.Row, item.Column]px;" />
+                </a>
+            }
+        </article>
+        }
+    </div>
 }
 
 <div>
