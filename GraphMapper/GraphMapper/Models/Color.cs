@@ -38,7 +38,6 @@ namespace GraphMapper.Models
             Name = "Untitled Color #" + ++UntitledNumber;
             Row = Column = 0;
             Red = Green = Blue = 0;
-            Name = "Black";
         }
 
         public System.Drawing.Color ToSystemColor()

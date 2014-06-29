@@ -27,6 +27,50 @@ namespace GraphMapper.Models
         private static int LastOrderUsed { get; set; }
         private static int UntitledNumber { get; set; }
 
+        public int FirstEmptyRow
+        {
+            get
+            {
+                if (Colors.Count == Rows * Columns)
+                {
+                    return -1;
+                }
+                for (int row = 0; row != Rows; row++)
+                {
+                    for(int column = 0; column != Columns; column++)
+                    {
+                        if(!(Colors.Any(c => c.Row == row && c.Column == column)))
+                        {
+                            return row;
+                        }
+                    }
+                }
+                return -1;
+            }
+        }
+
+        public int FirstEmptyColumn
+        {
+            get
+            {
+                if(Colors.Count == Rows * Columns)
+                {
+                    return -1;
+                }
+                for (int row = 0; row != Rows; row++)
+                {
+                    for (int column = 0; column != Columns; column++)
+                    {
+                        if (!(Colors.Any(c => c.Row == row && c.Column == column)))
+                        {
+                            return column;
+                        }
+                    }
+                }
+                return -1;
+            }
+        }
+
         static ColorPalette()
         {
             LastOrderUsed = 60000;

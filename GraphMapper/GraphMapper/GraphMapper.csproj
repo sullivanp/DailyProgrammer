@@ -163,12 +163,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ColorPalettesController.cs" />
+    <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\CommonControllerUtils.cs" />
     <Compile Include="Controllers\GraphMapperController.cs" />
     <Compile Include="Controllers\GraphMapperImagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ShapePalettesController.cs" />
+    <Compile Include="Controllers\ShapesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +211,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Colors\SolidFilledBox.png" />
     <Content Include="Content\graphmap.css" />
+    <Content Include="Content\Shapes\AddIcon.png" />
     <Content Include="Content\Shapes\BackgroundColorIcon.png" />
     <Content Include="Content\Shapes\BackgroundColorIcon32x32.png" />
     <Content Include="Content\Shapes\CenteredHorizontalLine.png" />
@@ -217,11 +220,13 @@
     <Content Include="Content\Shapes\ForegroundColorIcon.png" />
     <Content Include="Content\Shapes\ForegroundColorIcon32x32.png" />
     <Content Include="Content\Shapes\HollowBox.png" />
+    <Content Include="Content\Shapes\RemoveIcon.png" />
     <Content Include="Content\Shapes\SolidFilledBox.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Migrations\UpdateDatabaseCommand.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -281,8 +286,18 @@
     <Content Include="Views\ColorPalettes\Details.cshtml" />
     <Content Include="Views\ColorPalettes\Edit.cshtml" />
     <Content Include="Views\ColorPalettes\Index.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\GraphMapper\SetMapElement.cshtml" />
+    <None Include="Views\Profile.bak\Index.cshtml.bak" />
+    <Content Include="Views\Colors\Create.cshtml" />
+    <Content Include="Views\Colors\Delete.cshtml" />
+    <Content Include="Views\Colors\Details.cshtml" />
+    <Content Include="Views\Colors\Edit.cshtml" />
+    <Content Include="Views\Colors\Index.cshtml" />
+    <None Include="Views\GraphMapper\SetMapElement.cshtml.bak" />
+    <Content Include="Views\Shapes\Create.cshtml" />
+    <Content Include="Views\Shapes\Delete.cshtml" />
+    <Content Include="Views\Shapes\Details.cshtml" />
+    <Content Include="Views\Shapes\Edit.cshtml" />
+    <Content Include="Views\Shapes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
