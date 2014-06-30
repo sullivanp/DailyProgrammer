@@ -1,0 +1,80 @@
+﻿@model GraphMapper.Models.ColorPalette
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ColorPalette</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rows)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rows)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Columns)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Columns)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+    </dl>
+
+    <div style="display:inline-block">
+
+        @{ string colorPaletteWidth = ViewBag.ColorPaletteWidth + "px"; }
+        @{ string colorPaletteHeight = ViewBag.ColorPaletteHeight + "px"; }
+
+        <article class="colorpalette" style="width: @colorPaletteWidth; height: @colorPaletteHeight;">
+            @foreach (var item in Model.Colors)
+            {
+                <a href="/Profile/SetColorID/@item.ID">
+                    <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+                </a>
+            }
+        </article>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

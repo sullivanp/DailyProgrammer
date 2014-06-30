@@ -1,0 +1,119 @@
+﻿@model GraphMapper.Models.ColorPalette
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ColorPalette</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rows, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rows, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rows, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Columns, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Columns, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Columns, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--
+        <div class="form-group">
+            @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+            </div>
+        </div>
+         -->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <div style="display:inline-block">
+        <div class="graphmaptoolbar" style="width: 66px; height: 34px;">
+            <a href="/Profile/SetAddingColor/true">
+                <img src="~/Content/Shapes/AddIcon.png" style="left: 0px; top: 0px;" />
+            </a>
+            <a href="/Profile/SetDeletingColor/true">
+                <img src="~/Content/Shapes/RemoveIcon.png" style="left:33px; top: 0px;" />
+            </a>
+        </div>
+
+        @{
+        string colorPaletteWidth = ViewBag.ColorPaletteWidth + "px";
+        string colorPaletteHeight = ViewBag.ColorPaletteHeight + "px";
+
+        <article class="colorpalette" style="width: @colorPaletteWidth; height: @colorPaletteHeight; float: left; clear: left;">
+            @foreach (var item in Model.Colors)
+            {
+                if (ViewBag.DeletingColor)
+                {
+                    <a href="/ColorPalettes/DeleteColorFromPalette/@item.ID">
+                        <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+                    </a>
+                }
+                else if (ViewBag.AddingColor)
+                {
+                    <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+                }
+                else
+                {
+                    <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+                }
+            }
+        </article>
+        }
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

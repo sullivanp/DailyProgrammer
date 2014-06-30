@@ -10,6 +10,7 @@ namespace GraphMapper.ApplicationDbMigrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             MigrationsDirectory = @"ApplicationDbMigrations";
             ContextKey = "GraphMapper.Models.ApplicationDbContext";
         }

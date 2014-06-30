@@ -17,9 +17,9 @@ namespace GraphMapper.Controllers
 
         public ActionResult About()
         {
-            var configuration = new Configuration();
-            var migrator = new DbMigrator(configuration);
-            migrator.Update(); 
+            //var configuration = new Configuration();
+            //var migrator = new DbMigrator(configuration);
+            //migrator.Update(); 
             
             ViewBag.Message = "Your application description page.";
 

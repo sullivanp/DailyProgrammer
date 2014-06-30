@@ -11,7 +11,8 @@ namespace GraphMapper.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "GraphMapper.Models.GraphMapperContext";
         }
 
         protected override void Seed(GraphMapperContext context)
@@ -125,7 +126,10 @@ namespace GraphMapper.Migrations
                     },
                     DefaultColorPalette = new ColorPalette
                     {
-                        Rows = 2, Columns = 2, Name = "Default Color Palette for 2x2", Order = 20,
+                        Rows = 2,
+                        Columns = 2,
+                        Name = "Default Color Palette for 2x2",
+                        Order = 20,
                         Updated = new DateTime(2014, 6, 26, 8, 32, 15),
                         Colors = new List<Color>
                         {
@@ -135,7 +139,10 @@ namespace GraphMapper.Migrations
                     },
                     DefaultShapePalette = new ShapePalette
                     {
-                        Rows = 2, Columns = 2, Name = "Default Shape Palette for 2x2", Order = 80,
+                        Rows = 2,
+                        Columns = 2,
+                        Name = "Default Shape Palette for 2x2",
+                        Order = 80,
                         Updated = new DateTime(2014, 6, 26, 8, 32, 20),
                         Shapes = new List<Shape>
                         {
@@ -237,7 +244,10 @@ namespace GraphMapper.Migrations
                     },
                     DefaultShapePalette = new ShapePalette
                     {
-                        Rows = 2, Columns = 2, Name = "Default Shape Palette for 3x3", Order = 260,
+                        Rows = 2,
+                        Columns = 2,
+                        Name = "Default Shape Palette for 3x3",
+                        Order = 260,
                         Updated = new DateTime(2014, 6, 26, 8, 32, 50),
                         Shapes = new List<Shape>
                         {

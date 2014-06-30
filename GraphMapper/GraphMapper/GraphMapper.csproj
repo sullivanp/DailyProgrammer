@@ -29,6 +29,32 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=aspnet-GraphMapper-20140623013242%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\aspnet-GraphMapper-20140623013242.mdf%3bInitial Catalog=aspnet-GraphMapper-20140623013242%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="GraphMapperContext-Deployment" Order="2">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=GRAPHMAPPER_7e460e885e24490f9538e097240cab88%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\GraphMapper.mdf%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\GraphMapperContext-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="SqlServices-Deployment" Order="3">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=aspnetdb%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bInitial Catalog=aspnetdb%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\SqlServices-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,8 +63,38 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=aspnet-GraphMapper-20140623013242%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\aspnet-GraphMapper-20140623013242.mdf%3bInitial Catalog=aspnet-GraphMapper-20140623013242%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="GraphMapperContext-Deployment" Order="2">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=GRAPHMAPPER_7e460e885e24490f9538e097240cab88%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\GraphMapper.mdf%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\GraphMapperContext-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="SqlServices-Deployment" Order="3">
+          <Destination Path="Data Source=WWW-SERVER-WIND%3bInitial Catalog=aspnetdb%3bPersist Security Info=True%3bUser ID=sa%3bPassword=Gal.Ent-NCC1701-E" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bInitial Catalog=aspnetdb%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\SqlServices-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -46,6 +102,14 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -114,14 +178,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -155,7 +213,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbMigrations\Configuration.cs" />
+    <None Include="ApplicationDbMigrations_backup\201406301852286_Latest.cs" />
+    <Compile Include="ApplicationDbMigrations_backup\201406301852286_Latest.Designer.cs">
+      <DependentUpon>201406301852286_Latest.cs</DependentUpon>
+    </Compile>
+    <None Include="ApplicationDbMigrations_backup\Configuration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -174,19 +236,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406232343447_SeedTest.cs" />
-    <Compile Include="Migrations\201406232343447_SeedTest.Designer.cs">
-      <DependentUpon>201406232343447_SeedTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs" />
-    <Compile Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.Designer.cs">
-      <DependentUpon>201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.cs" />
-    <Compile Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.Designer.cs">
-      <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
+    <None Include="Migrations_backup\201406232343447_SeedTest.cs" />
+    <Compile Include="Migrations\201406302134359_InitialCreate.cs" />
+    <Compile Include="Migrations\201406302134359_InitialCreate.Designer.cs">
+      <DependentUpon>201406302134359_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations_AppDb\201406302137497_InitialCreate.cs" />
+    <Compile Include="Migrations_AppDb\201406302137497_InitialCreate.Designer.cs">
+      <DependentUpon>201406302137497_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations_AppDb\Configuration.cs" />
+    <Compile Include="Migrations_backup\201406232343447_SeedTest.Designer.cs">
+      <DependentUpon>201406232343447_SeedTest.cs</DependentUpon>
+    </Compile>
+    <None Include="Migrations_backup\201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs" />
+    <Compile Include="Migrations_backup\201406240429506_RemoveColorAndShapeFromDefaultDatabase.Designer.cs">
+      <DependentUpon>201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs</DependentUpon>
+    </Compile>
+    <None Include="Migrations_backup\201406240439319_DefaultShapeSeparatorAndType.cs" />
+    <Compile Include="Migrations_backup\201406240439319_DefaultShapeSeparatorAndType.Designer.cs">
+      <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
+    </Compile>
+    <None Include="Migrations_backup\201406301851534_Latest.cs" />
+    <Compile Include="Migrations_backup\201406301851534_Latest.Designer.cs">
+      <DependentUpon>201406301851534_Latest.cs</DependentUpon>
+    </Compile>
+    <None Include="Migrations_backup\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\ColorPalette.cs" />
@@ -199,6 +275,11 @@
     <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\ShapePalette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,14 +302,20 @@
     <Content Include="Content\Shapes\ForegroundColorIcon32x32.png" />
     <Content Include="Content\Shapes\HollowBox.png" />
     <Content Include="Content\Shapes\RemoveIcon.png" />
+    <None Include="Content\Shapes\SolidFilledBox.png.old" />
     <Content Include="Content\Shapes\SolidFilledBox.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Migrations\UpdateDatabaseCommand.txt" />
+    <Content Include="Migrations_backup\UpdateDatabaseCommand.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\www-server-windows.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -241,12 +328,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -310,14 +393,26 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201406232343447_SeedTest.resx">
+    <EmbeddedResource Include="ApplicationDbMigrations_backup\201406301852286_Latest.resx">
+      <DependentUpon>201406301852286_Latest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406302134359_InitialCreate.resx">
+      <DependentUpon>201406302134359_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations_AppDb\201406302137497_InitialCreate.resx">
+      <DependentUpon>201406302137497_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations_backup\201406232343447_SeedTest.resx">
       <DependentUpon>201406232343447_SeedTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406240429506_RemoveColorAndShapeFromDefaultDatabase.resx">
+    <EmbeddedResource Include="Migrations_backup\201406240429506_RemoveColorAndShapeFromDefaultDatabase.resx">
       <DependentUpon>201406240429506_RemoveColorAndShapeFromDefaultDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406240439319_DefaultShapeSeparatorAndType.resx">
+    <EmbeddedResource Include="Migrations_backup\201406240439319_DefaultShapeSeparatorAndType.resx">
       <DependentUpon>201406240439319_DefaultShapeSeparatorAndType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations_backup\201406301851534_Latest.resx">
+      <DependentUpon>201406301851534_Latest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -343,10 +438,11 @@
           <DevelopmentServerPort>53022</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:53022/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:53022/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://www-server-wind.justhal.dyndns.org/GraphMapper/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -42,7 +42,7 @@ namespace GraphMapper.Models
             this.FileNameExtensionSeparator = Resources.DefaultFileExtensionSeparator;
             this.TypeExtension = Resources.DefaultImageTypeExtension;
             Row = Column = 0;
-            ShortName = "Untitled Shape #" + ++UntitledNumber;
+            ShortName = "Untitled Shape " + ++UntitledNumber;
         }
 
         public Shape(string shortName, string typeExtension) : this()

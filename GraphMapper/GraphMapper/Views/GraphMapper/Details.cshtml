@@ -36,15 +36,18 @@
 
     </dl>
 
-    @{ string graphMapWidth = ViewBag.GraphMapWidth + "px"; }
-    @{ string graphMapHeight = ViewBag.GraphMapHeight + "px"; }
+    <div style="display: inline-block;">
 
-    <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
-        @foreach (var item in Model.MapElements)
-        {
-            <img src="@ViewBag.ImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;"/>
-        }
-    </article>
+        @{ string graphMapWidth = ViewBag.GraphMapWidth + "px"; }
+        @{ string graphMapHeight = ViewBag.GraphMapHeight + "px"; }
+
+        <article class="graphmap" style="width: @graphMapWidth; height: @graphMapHeight;">
+            @foreach (var item in Model.MapElements)
+            {
+                <img src="@ViewBag.ImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
+            }
+        </article>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
