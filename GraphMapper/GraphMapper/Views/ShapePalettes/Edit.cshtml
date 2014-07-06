@@ -60,10 +60,10 @@
         @{
 
             <div class="graphmaptoolbar" style="width: 66px; height: 34px;">
-                <a href="/Profile/SetAddingShape/true">
+                <a href="@ViewBag.ToolBarLinks[0]">
                     <img src="~/Content/Shapes/AddIcon.png" style="left: 0px; top: 0px;" />
                 </a>
-                <a href="/Profile/SetDeletingShape/true">
+                <a href="@ViewBag.ToolBarLinks[1]">
                     <img src="~/Content/Shapes/RemoveIcon.png" style="left:33px; top: 0px;" />
                 </a>
             </div>
@@ -76,7 +76,7 @@
                     {
                         if (ViewBag.DeletingShape)
                         {
-                            <a href="/ShapePalettes/DeleteShape/@item.ID">
+                            <a href="@ViewBag.ImageLinks[item.Row, item.Column]">
                                 <img src="@ViewBag.ImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
                             </a>
                         } else if(ViewBag.AddingShape)

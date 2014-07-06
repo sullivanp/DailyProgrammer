@@ -51,7 +51,7 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
 
-                ViewBag.ImageFilenames[shape.Row, shape.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + shape.ID;
+                ViewBag.ImageFilenames[shape.Row, shape.Column] = Url.Action(imageActionName, imageControllerName, new { id = shape.ID });
                 ViewBag.ImageLefts[shape.Row, shape.Column] = imageWidth * shape.Column;
                 ViewBag.ImageTops[shape.Row, shape.Column] = imageHeight * shape.Row;
                 ViewBag.ImageWidth = imageWidth;
@@ -119,6 +119,7 @@ namespace GraphMapper.Controllers
             ViewBag.ImageFilenames = new string[shapePalette.Rows, shapePalette.Columns];
             ViewBag.ImageLefts = new int[shapePalette.Rows, shapePalette.Columns];
             ViewBag.ImageTops = new int[shapePalette.Rows, shapePalette.Columns];
+            ViewBag.ImageLinks = new string[shapePalette.Rows, shapePalette.Columns];
             foreach (Shape shape in shapePalette.Shapes)
             {
                 string imageFilename = shape.FileName;
@@ -127,6 +128,8 @@ namespace GraphMapper.Controllers
                 string imageSeparator = shape.FileNameExtensionSeparator;
                 string imageControllerName = "GraphMapperImages";
                 string imageActionName = "GetImageFromShape";
+                string imageLinkController = "ShapePalettes";
+                string imageLinkAction = "DeleteShape";
 
                 int imageWidth = CommonControllerUtils.GetImageWidth(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
@@ -134,7 +137,8 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
 
-                ViewBag.ImageFilenames[shape.Row, shape.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + shape.ID;
+                ViewBag.ImageFilenames[shape.Row, shape.Column] = Url.Action(imageActionName, imageControllerName, new { id = shape.ID });
+                ViewBag.ImageLinks[shape.Row, shape.Column] = Url.Action(imageLinkAction, imageLinkController, new { id = shape.ID });
                 ViewBag.ImageLefts[shape.Row, shape.Column] = imageWidth * shape.Column;
                 ViewBag.ImageTops[shape.Row, shape.Column] = imageHeight * shape.Row;
                 ViewBag.ImageWidth = imageWidth;
@@ -142,6 +146,11 @@ namespace GraphMapper.Controllers
                 ViewBag.ShapePaletteWidth = imageWidth * shapePalette.Columns;
                 ViewBag.ShapePaletteHeight = imageHeight * shapePalette.Rows;
             }
+
+            ViewBag.ToolBarLinks = new string[2];
+            ViewBag.ToolBarLinks[0] = Url.Action("SetAddingShape", "Profile", new { id = true });
+            ViewBag.ToolBarLinks[1] = Url.Action("SetDeletingShape", "Profile", new { id = true });
+
             bool addingShape;
             bool deletingShape;
             string currentUrl;
@@ -179,11 +188,11 @@ namespace GraphMapper.Controllers
                     db.SaveChanges();
                     currentUrl = HttpContext.Request.Path;
                     Profile.SetPropertyValue("CurrentUrl", currentUrl);
-                    return Redirect("/Shapes/Edit/" + shape.ID);
+                    return Redirect(Url.Action("Edit", "Shapes", new {id = shape.ID}));
                 }
                 else
                 {
-                    Profile.SetPropertyValue("AddingColor", false);
+                    Profile.SetPropertyValue("AddingShape", false);
                 }
             }
             else if (deletingShape)

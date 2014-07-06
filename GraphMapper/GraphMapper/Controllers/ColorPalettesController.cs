@@ -52,7 +52,7 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(colorImagePath + colorImageFilename + colorImageSeparator + colorImageTypeExtension)));
 
-                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + color.ID;
+                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = Url.Action(imageActionName, imageControllerName, new { id = color.ID });
                 ViewBag.ImageLefts[color.Row, color.Column] = imageWidth * color.Column;
                 ViewBag.ImageTops[color.Row, color.Column] = imageHeight * color.Row;
                 ViewBag.ImageWidth = imageWidth;
@@ -116,7 +116,7 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(colorImagePath + colorImageFilename + colorImageSeparator + colorImageTypeExtension)));
 
-                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + color.ID;
+                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = Url.Action(imageActionName, imageControllerName, new { id = color.ID });
                 ViewBag.ImageLefts[color.Row, color.Column] = imageWidth * color.Column;
                 ViewBag.ImageTops[color.Row, color.Column] = imageHeight * color.Row;
                 ViewBag.ImageWidth = imageWidth;

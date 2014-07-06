@@ -180,6 +180,7 @@ namespace GraphMapper.Controllers
             ViewBag.ImageFilenames = new string[shapeMap.Rows, shapeMap.Columns];
             ViewBag.ImageLefts = new int[shapeMap.Rows, shapeMap.Columns];
             ViewBag.ImageTops = new int[shapeMap.Rows, shapeMap.Columns];
+            ViewBag.ImageLinks = new string[shapeMap.Rows, shapeMap.Columns];
             int graphMapImageWidth = 40;
             int graphMapImageHeight = 40;
             foreach (MapElement mapElement in shapeMap.MapElements)
@@ -190,6 +191,8 @@ namespace GraphMapper.Controllers
                 string imageSeparator = mapElement.Shape.FileNameExtensionSeparator;
                 string imageControllerName = "GraphMapperImages";
                 string imageActionName = "GetImageFromMapElement";
+                string imageLinkController = "GraphMapper";
+                string imageLinkAction = "SetMapElement";
 
                 graphMapImageWidth = CommonControllerUtils.GetImageWidth(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
@@ -197,7 +200,8 @@ namespace GraphMapper.Controllers
                 graphMapImageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
 
-                ViewBag.ImageFilenames[mapElement.Row, mapElement.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + mapElement.ID.ToString();
+                ViewBag.ImageFilenames[mapElement.Row, mapElement.Column] = Url.Action(imageActionName, imageControllerName, new { id = mapElement.ID });
+                ViewBag.ImageLinks[mapElement.Row, mapElement.Column] = Url.Action(imageLinkAction, imageLinkController, new { id = mapElement.ID });
                 ViewBag.ImageLefts[mapElement.Row, mapElement.Column] = graphMapImageWidth * mapElement.Column;
                 ViewBag.ImageTops[mapElement.Row, mapElement.Column] = graphMapImageHeight * mapElement.Row;
                 ViewBag.ImageWidth = graphMapImageWidth;
@@ -210,6 +214,7 @@ namespace GraphMapper.Controllers
             ViewBag.ShapePalette = shapePalette;
 
             ViewBag.ShapePaletteImageFilenames = new string[shapePalette.Rows, shapePalette.Columns];
+            ViewBag.ShapePaletteImageLinks = new string[shapePalette.Rows, shapePalette.Columns];
             ViewBag.ShapePaletteImageLefts = new int[shapePalette.Rows, shapePalette.Columns];
             ViewBag.ShapePaletteImageTops = new int[shapePalette.Rows, shapePalette.Columns];
             foreach (Shape paletteShape in shapePalette.Shapes)
@@ -220,6 +225,8 @@ namespace GraphMapper.Controllers
                 string imageSeparator = paletteShape.FileNameExtensionSeparator;
                 string imageControllerName = "GraphMapperImages";
                 string imageActionName = "GetImageFromShape";
+                string imageControllerLink = "Profile";
+                string imageActionLink = "SetShapeID";
 
                 int imageWidth = CommonControllerUtils.GetImageWidth(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
@@ -227,7 +234,8 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(imagePath + imageFilename)));
 
-                ViewBag.ShapePaletteImageFilenames[paletteShape.Row, paletteShape.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + paletteShape.ID;
+                ViewBag.ShapePaletteImageFilenames[paletteShape.Row, paletteShape.Column] = Url.Action(imageActionName, imageControllerName, new{ id = paletteShape.ID });
+                ViewBag.ShapePaletteImageLinks[paletteShape.Row, paletteShape.Column] = Url.Action(imageActionLink, imageControllerLink, new { id = paletteShape.ID });
                 ViewBag.ShapePaletteImageLefts[paletteShape.Row, paletteShape.Column] = imageWidth * paletteShape.Column;
                 ViewBag.ShapePaletteImageTops[paletteShape.Row, paletteShape.Column] = imageHeight * paletteShape.Row;
                 ViewBag.ShapePaletteImageWidth = imageWidth;
@@ -240,6 +248,7 @@ namespace GraphMapper.Controllers
             ViewBag.ColorPalette = colorPalette;
 
             ViewBag.ColorPaletteImageFilenames = new string[colorPalette.Rows, colorPalette.Columns];
+            ViewBag.ColorPaletteImageLinks = new string[colorPalette.Rows, colorPalette.Columns];
             ViewBag.ColorPaletteImageLefts = new int[colorPalette.Rows, colorPalette.Columns];
             ViewBag.ColorPaletteImageTops = new int[colorPalette.Rows, colorPalette.Columns];
             foreach (GraphMapper.Models.Color color in colorPalette.Colors)
@@ -250,6 +259,8 @@ namespace GraphMapper.Controllers
                 string imageSeparator = Resources.DefaultFileExtensionSeparator;
                 string imageControllerName = "GraphMapperImages";
                 string imageActionName = "GetImageFromColor";
+                string imageControllerLink = "Profile";
+                string imageActionLink = "SetColorID";
 
                 int imageWidth = CommonControllerUtils.GetImageWidth(
                     Server.MapPath(Url.Content(imagePath + imageFilename + imageSeparator + imageTypeExtension)));
@@ -257,7 +268,8 @@ namespace GraphMapper.Controllers
                 int imageHeight = CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(imagePath + imageFilename + imageSeparator + imageTypeExtension)));
 
-                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = "/" + imageControllerName + "/" + imageActionName + "/" + color.ID;
+                ViewBag.ColorPaletteImageFilenames[color.Row, color.Column] = Url.Action(imageActionName, imageControllerName, new { id = color.ID });
+                ViewBag.ColorPaletteImageLinks[color.Row, color.Column] = Url.Action(imageActionLink, imageControllerLink, new { id = color.ID });
                 ViewBag.ColorPaletteImageLefts[color.Row, color.Column] = imageWidth * color.Column;
                 ViewBag.ColorPaletteImageTops[color.Row, color.Column] = imageHeight * color.Row;
                 ViewBag.ColorPaletteImageWidth = imageWidth;
@@ -265,6 +277,10 @@ namespace GraphMapper.Controllers
                 ViewBag.ColorPaletteWidth = imageWidth * colorPalette.Columns;
                 ViewBag.ColorPaletteHeight = imageHeight * colorPalette.Rows;
             }
+
+            ViewBag.ToolBarLinks = new string[2];
+            ViewBag.ToolBarLinks[0] = Url.Action("SetSelectingForegroundColor", "Profile", new { id = true });
+            ViewBag.ToolBarLinks[1] = Url.Action("SetSelectingForegroundColor", "Profile", new { id = false });
 
             int foregroundColorID;
             int backgroundColorID;
@@ -316,7 +332,7 @@ namespace GraphMapper.Controllers
                 int previewImageHeight = 2 * CommonControllerUtils.GetImageHeight(
                     Server.MapPath(Url.Content(previewImagePath + previewImageFilename)));
 
-                ViewBag.PreviewImageFilename = "/" + previewImageControllerName + "/" + previewImageActionName + "/" + previewElement.ID.ToString();
+                ViewBag.PreviewImageFilename = Url.Action(previewImageActionName, previewImageControllerName, new {id = previewElement.ID});
                 ViewBag.PreviewImageWidth = previewImageWidth;
                 ViewBag.ImageHeight = previewImageHeight;
                 ViewBag.PreviewImageExists = true;

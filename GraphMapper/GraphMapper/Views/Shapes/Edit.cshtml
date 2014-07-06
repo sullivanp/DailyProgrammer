@@ -68,10 +68,10 @@
         @{
 
             <div class="graphmaptoolbar" style="width: 66px; height: 34px;">
-                <a href="/Profile/SetSelectingForegroundColor/true">
+                <a href="@ViewBag.ToolBarLinks[0]">
                     <img src="~/Content/Shapes/ForegroundColorIcon32x32.png" style="left: 0px; top: 0px;" />
                 </a>
-                <a href="/Profile/SetSelectingForegroundColor/false">
+                <a href="@ViewBag.ToolBarLinks[1]">
                     <img src="~/Content/Shapes/BackgroundColorIcon32x32.png" style="left:33px; top: 0px;" />
                 </a>
             </div>
@@ -82,7 +82,7 @@
     <article class="shapepalette" style="width: @shapePaletteWidth; height: @shapePaletteHeight;">
         @foreach (var item in ViewBag.ShapePalette.Shapes)
         {
-            <a href="/Profile/SetShapeID/@item.ID">
+            <a href="@ViewBag.ShapePaletteImageLinks[item.Row, item.Column]">
                 <img src="@ViewBag.ShapePaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ShapePaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ShapePaletteImageTops[item.Row, item.Column]px;" />
             </a>
         }
@@ -96,7 +96,7 @@
             {
                 if (ViewBag.ShapeID != -1 && ViewBag.ForegroundColorID != -1 && ViewBag.BackgroundColorID != -1)
                 {
-                    <a href="/GraphMapper/SetMapElement/@mapElement.ID">
+                    <a href="@ViewBag.ImageLinks[mapElement.Row, mapElement.Column]">
                         <img src="@ViewBag.ImageFilenames[mapElement.Row, mapElement.Column]" style="left:@ViewBag.ImageLefts[mapElement.Row, mapElement.Column]px; top:@ViewBag.ImageTops[mapElement.Row, mapElement.Column]px;" />
                     </a>
                 }
@@ -127,7 +127,7 @@
             <article class="colorpalette" style="width: @colorPaletteWidth; height: @colorPaletteHeight;">
                 @foreach (var item in ViewBag.ColorPalette.Colors)
                 {
-                    <a href="/Profile/SetColorID/@item.ID">
+                    <a href="@ViewBag.ColorPaletteImageLinks[item.Row, item.Column]">
                         <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ColorPaletteImageLefts[item.Row, item.Column]px; top:@ViewBag.ColorPaletteImageTops[item.Row, item.Column]px;" />
                     </a>
                 }

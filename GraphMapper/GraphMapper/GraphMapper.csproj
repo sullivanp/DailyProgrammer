@@ -437,9 +437,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53022</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53022/</IISUrl>
+          <IISUrl>http://localhost:53022/GraphMapper/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:53022/</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost:53022/GraphMapper/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://www-server-wind.justhal.dyndns.org/GraphMapper/</CustomServerUrl>
