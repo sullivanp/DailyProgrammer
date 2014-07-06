@@ -166,7 +166,7 @@ namespace GraphMapper.Controllers
                     db.SaveChanges();
                     currentUrl = HttpContext.Request.Path;
                     Profile.SetPropertyValue("CurrentUrl", currentUrl);
-                    return Redirect("/Colors/Edit/" + color.ID);
+                    return Redirect("~/Colors/Edit/" + color.ID);
                 } else
                 {
                     Profile.SetPropertyValue("AddingColor", false);

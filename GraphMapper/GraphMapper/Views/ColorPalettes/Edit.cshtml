@@ -76,10 +76,10 @@
 
     <div style="display:inline-block">
         <div class="graphmaptoolbar" style="width: 66px; height: 34px;">
-            <a href="/Profile/SetAddingColor/true">
+            <a href="~/Profile/SetAddingColor/true">
                 <img src="~/Content/Shapes/AddIcon.png" style="left: 0px; top: 0px;" />
             </a>
-            <a href="/Profile/SetDeletingColor/true">
+            <a href="~/Profile/SetDeletingColor/true">
                 <img src="~/Content/Shapes/RemoveIcon.png" style="left:33px; top: 0px;" />
             </a>
         </div>
@@ -93,7 +93,7 @@
             {
                 if (ViewBag.DeletingColor)
                 {
-                    <a href="/ColorPalettes/DeleteColorFromPalette/@item.ID">
+                    <a href="~/ColorPalettes/DeleteColorFromPalette/@item.ID">
                         <img src="@ViewBag.ColorPaletteImageFilenames[item.Row, item.Column]" style="left:@ViewBag.ImageLefts[item.Row, item.Column]px; top:@ViewBag.ImageTops[item.Row, item.Column]px;" />
                     </a>
                 }
